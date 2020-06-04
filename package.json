@@ -1,0 +1,13 @@
+{
+  "name": "gubal-data-rebuild",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/siluat/gubal-data-rebuild.git",
+  "author": "Siluat <siluat@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "fast-csv": "^4.3.0",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3"
+  }
+}
