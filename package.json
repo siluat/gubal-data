@@ -5,6 +5,10 @@
   "repository": "https://github.com/siluat/gubal-data-rebuild.git",
   "author": "Siluat <siluat@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "schema": "ts-node ./scripts/schema.ts",
+    "schema:dev": "nodemon --watch ./scripts/schema.ts --exec yarn schema"
+  },
   "dependencies": {
     "chalk": "^4.0.0",
     "fast-csv": "^4.3.0",
