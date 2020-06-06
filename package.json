@@ -1,11 +1,12 @@
 {
   "name": "gubal-data-rebuild",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.1.0",
+  "main": "main.ts",
   "repository": "https://github.com/siluat/gubal-data-rebuild.git",
   "author": "Siluat <siluat@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "ts-node ./src/main.ts",
     "schema": "ts-node ./scripts/schema.ts",
     "schema:dev": "nodemon --watch ./scripts/schema.ts --exec yarn schema"
   },

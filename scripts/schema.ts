@@ -2,7 +2,7 @@
 import { parseFile } from 'fast-csv';
 import chalk from 'chalk';
 
-type Row = string[];
+import { Row } from '../src/types/common';
 
 type Header = {
   index: number;
