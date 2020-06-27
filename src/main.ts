@@ -18,7 +18,7 @@ async function parseSheet(filepath: string): Promise<Row[]> {
   });
 }
 
-function createItemIndex(itemRows: Row[]): ItemSummary[] {
+function createItemSummaries(itemRows: Row[]): ItemSummary[] {
   // 검색 색인 생성에 필요한 데이터만 추출
   return itemRows.map((row) => [
     parseInt(row[0], 10), // key
@@ -30,13 +30,20 @@ function createItemIndex(itemRows: Row[]): ItemSummary[] {
   ]);
 }
 
+function validateKey(itemSummary: ItemSummary): boolean {
+  const [key] = itemSummary;
+  return key !== 0 && (key < 40 || key > 1600);
+}
+
 async function main() {
   try {
     await cleanBuildDirectory();
     await createBuildDirectory();
 
     const [, , , ...rows] = await parseSheet('./csv/Item.csv');
-    const itemSummaries: ItemSummary[] = createItemIndex(rows);
+    const itemSummaries: ItemSummary[] = createItemSummaries(rows).filter(
+      validateKey,
+    );
     await writeObjectToFile('itemSummaries.json', itemSummaries);
   } catch (error) {
     console.error(error);
