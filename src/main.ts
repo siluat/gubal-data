@@ -6,6 +6,8 @@ import {
 } from './lib/file';
 import { Row } from './types/common';
 
+type ItemSummary = [number, string, string, number, number, number];
+
 async function parseSheet(filepath: string): Promise<Row[]> {
   const rows: Row[] = [];
   return new Promise<Row[]>((resolve, reject) => {
@@ -16,17 +18,16 @@ async function parseSheet(filepath: string): Promise<Row[]> {
   });
 }
 
-async function createItemIndex(itemRows: Row[]) {
+function createItemIndex(itemRows: Row[]): ItemSummary[] {
   // 검색 색인 생성에 필요한 데이터만 추출
-  const leanedRows: Row[] = itemRows.map((row) => [
-    row[0], // key
+  return itemRows.map((row) => [
+    parseInt(row[0], 10), // key
     row[10], // name
     row[11], // icon
-    row[12], // item level
-    row[13], // rarity
-    row[16], // item ui category
+    parseInt(row[12], 10), // item level
+    parseInt(row[13], 10), // rarity
+    parseInt(row[16], 10), // item ui category
   ]);
-  return leanedRows;
 }
 
 async function main() {
@@ -35,8 +36,8 @@ async function main() {
     await createBuildDirectory();
 
     const [, , , ...rows] = await parseSheet('./csv/Item.csv');
-    const searchIndex: Row[] = await createItemIndex(rows);
-    writeObjectToFile('itemIndex.json', searchIndex);
+    const itemSummaries: ItemSummary[] = createItemIndex(rows);
+    await writeObjectToFile('itemSummaries.json', itemSummaries);
   } catch (error) {
     console.error(error);
   }
