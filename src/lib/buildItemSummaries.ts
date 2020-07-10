@@ -1,18 +1,7 @@
 import { Row } from '../types/common';
-import { parseFile } from 'fast-csv';
-import { writeObjectToFile } from './file';
+import { writeObjectToFile, getRowsFromCSV } from './file';
 
 type ItemSummary = [number, string, string, number, number, number];
-
-async function parseSheet(filepath: string): Promise<Row[]> {
-  const rows: Row[] = [];
-  return new Promise<Row[]>((resolve, reject) => {
-    parseFile(filepath)
-      .on('error', (error) => reject(error))
-      .on('data', (row: []) => Array.isArray(row) && rows.push(row))
-      .on('end', () => resolve(rows));
-  });
-}
 
 function createItemSummaries(itemRows: Row[]): ItemSummary[] {
   // 검색 색인 생성에 필요한 데이터만 추출
@@ -32,7 +21,7 @@ function validateKey(itemSummary: ItemSummary): boolean {
 }
 
 export async function buildItemSummaries() {
-  const [, , , ...rows] = await parseSheet('./csv/Item.csv');
+  const rows = await getRowsFromCSV('./csv/Item.csv');
   const itemSummaries: ItemSummary[] = createItemSummaries(rows).filter(
     validateKey,
   );
