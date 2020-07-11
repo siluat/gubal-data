@@ -1,7 +1,7 @@
 import { Row } from '../types/common';
 import { writeObjectToFile, getRowsFromCSV } from './file';
 
-type ItemSummary = [number, string, string, number, number, number];
+type ItemSummary = [number, string, string, number, number, number, number];
 
 function createItemSummaries(itemRows: Row[]): ItemSummary[] {
   // 검색 색인 생성에 필요한 데이터만 추출
@@ -12,6 +12,7 @@ function createItemSummaries(itemRows: Row[]): ItemSummary[] {
     parseInt(row[12], 10), // item level
     parseInt(row[13], 10), // rarity
     parseInt(row[16], 10), // item ui category
+    parseInt(row[40], 10), // equip level
   ]);
 }
 
