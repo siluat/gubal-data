@@ -21,14 +21,11 @@ async function parseFirstThreeRows(filepath: string): Promise<Row[]> {
 }
 
 function createHeaders(indexes: Row, keys: Row, types: Row): Header[] {
-  const headers: Header[] = [];
-  keys.map((key, i) => {
-    headers.push({
-      index: +indexes[i],
-      key,
-      type: types[i],
-    });
-  });
+  const headers: Header[] = keys.map((key, i) => ({
+    index: +indexes[i] + 1 || 0,
+    key,
+    type: types[i],
+  }));
   return headers;
 }
 
