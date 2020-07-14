@@ -19,7 +19,7 @@ function createItemUICategory(rows: Row[]): ItemUICategory[] {
   }));
 }
 
-export default async function useItem(): Promise<ItemUICategory[]> {
+export default async function useItemUICategory(): Promise<ItemUICategory[]> {
   const rows = await getRowsFromCSV('./csv/ItemUICategory.csv');
   return createItemUICategory(rows);
 }

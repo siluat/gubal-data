@@ -1,6 +1,7 @@
 import { getRowsFromCSV } from '../file';
 import { Row } from '../../types/common';
 import useItemUICategory, { ItemUICategory } from './useItemUICategory';
+import { validateKey, validateName } from '../../utils/filter';
 
 export type Item = {
   id: number;
@@ -28,5 +29,8 @@ async function createItem(rows: Row[]): Promise<Item[]> {
 
 export default async function useItem(): Promise<Item[]> {
   const rows = await getRowsFromCSV('./csv/Item.csv');
-  return createItem(rows);
+  const items = (await createItem(rows))
+    .filter(validateKey)
+    .filter(validateName);
+  return items;
 }
