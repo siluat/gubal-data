@@ -9,6 +9,9 @@ export async function createBuildDirectory() {
   if (!fs.existsSync(buildDirectory)) {
     await fsPromises.mkdir(buildDirectory);
   }
+  if (!fs.existsSync(`${buildDirectory}/item`)) {
+    await fsPromises.mkdir(`${buildDirectory}/item`);
+  }
 }
 
 export async function cleanBuildDirectory() {
@@ -20,7 +23,7 @@ export async function cleanBuildDirectory() {
 }
 
 export async function writeObjectToFile(filename: string, fromObject: Object) {
-  fsPromises.writeFile(
+  await fsPromises.writeFile(
     `${buildDirectory}/${filename}`,
     JSON.stringify(fromObject),
   );

@@ -1,6 +1,7 @@
 import { createBuildDirectory, cleanBuildDirectory } from './lib/file';
 import { buildItemSummaries } from './lib/buildItemSummaries';
 import { buildItemUICategory } from './lib/buildItemUICategory';
+import { buildItem } from './lib/buildItem';
 
 async function main() {
   try {
@@ -9,6 +10,7 @@ async function main() {
 
     await buildItemSummaries();
     await buildItemUICategory();
+    await buildItem();
   } catch (error) {
     console.error(error);
   }
