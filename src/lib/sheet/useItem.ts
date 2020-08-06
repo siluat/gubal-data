@@ -87,7 +87,7 @@ export type Item = {
 };
 
 function parseBoolean(value: string): boolean {
-  return value === 'TRUE';
+  return value === 'True';
 }
 
 async function createItem(rows: Row[]): Promise<Item[]> {
