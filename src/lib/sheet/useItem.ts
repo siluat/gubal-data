@@ -83,7 +83,7 @@ export type Item = {
   materiaSlotCount: number;
   isAdvancedMeldingPermitted: boolean;
   isPvP: boolean;
-  isGramourous: boolean;
+  isGlamourous: boolean;
 };
 
 function parseBoolean(value: string): boolean {
@@ -183,7 +183,7 @@ async function createItem(rows: Row[]): Promise<Item[]> {
       materiaSlotCount: parseInt(row[86], 10),
       isAdvancedMeldingPermitted: parseBoolean(row[87]),
       isPvP: parseBoolean(row[88]),
-      isGramourous: parseBoolean(row[90]),
+      isGlamourous: parseBoolean(row[90]),
     };
   });
 
