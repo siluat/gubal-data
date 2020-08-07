@@ -7,6 +7,11 @@ type BaseParam = {
   description: string;
 };
 
+export type BaseParamProps = {
+  name: string;
+  value: number;
+};
+
 function createBaseParam(rows: Row[]): BaseParam[] {
   return rows.map((row) => ({
     id: parseInt(row[0], 10),
@@ -22,20 +27,13 @@ export default async function useBaseParam() {
 
 export function parseBaseParam(
   baseParams: BaseParam[],
-  baseParamColumn: string,
-): string | undefined {
-  if (baseParamColumn === '0') {
+  keyColumn: string,
+  valueColumn: string,
+): BaseParamProps | undefined {
+  if (keyColumn === '0') {
     return undefined;
   }
-  return baseParams[parseInt(baseParamColumn, 10)].name;
-}
-
-export function parseBaseParamValue(
-  baseParamColumn: string,
-  baseParamValueColumn: string,
-): number | undefined {
-  if (baseParamColumn === '0') {
-    return undefined;
-  }
-  return parseInt(baseParamValueColumn, 10);
+  const name = baseParams[parseInt(keyColumn, 10)].name;
+  const value = parseInt(valueColumn, 10);
+  return { name, value };
 }

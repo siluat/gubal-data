@@ -7,10 +7,7 @@ import useSalvage from './useSalvage';
 import useClassJobCategory from './useClassJobCategory';
 import useGrandCompany from './useGrandCompany';
 import useItemSeries from './useItemSeries';
-import useBaseParam, {
-  parseBaseParam,
-  parseBaseParamValue,
-} from './useBaseParam';
+import useBaseParam, { parseBaseParam, BaseParamProps } from './useBaseParam';
 import useItemSpecialBonus from './useItemSpecialBonus';
 
 export type Item = {
@@ -53,32 +50,20 @@ export type Item = {
   block: number;
   physDefense: number;
   magDefense: number;
-  baseParam0?: string;
-  baseParamValue0?: number;
-  baseParam1?: string;
-  baseParamValue1?: number;
-  baseParam2?: string;
-  baseParamValue2?: number;
-  baseParam3?: string;
-  baseParamValue3?: number;
-  baseParam4?: string;
-  baseParamValue4?: number;
-  baseParam5?: string;
-  baseParamValue5?: number;
+  baseParams0?: BaseParamProps;
+  baseParams1?: BaseParamProps;
+  baseParams2?: BaseParamProps;
+  baseParams3?: BaseParamProps;
+  baseParams4?: BaseParamProps;
+  baseParams5?: BaseParamProps;
   itemSpecialBonus: string;
   itemSpecialBonusParam: number;
-  specialBaseParam0?: string;
-  specialBaseParamValue0?: number;
-  specialBaseParam1?: string;
-  specialBaseParamValue1?: number;
-  specialBaseParam2?: string;
-  specialBaseParamValue2?: number;
-  specialBaseParam3?: string;
-  specialBaseParamValue3?: number;
-  specialBaseParam4?: string;
-  specialBaseParamValue4?: number;
-  specialBaseParam5?: string;
-  specialBaseParamValue5?: number;
+  specialBaseParam0?: BaseParamProps;
+  specialBaseParam1?: BaseParamProps;
+  specialBaseParam2?: BaseParamProps;
+  specialBaseParam3?: BaseParamProps;
+  specialBaseParam4?: BaseParamProps;
+  specialBaseParam5?: BaseParamProps;
   materializeType: number;
   materiaSlotCount: number;
   isAdvancedMeldingPermitted: boolean;
@@ -153,32 +138,20 @@ async function createItem(rows: Row[]): Promise<Item[]> {
       block: parseInt(row[56], 10),
       physDefense: parseInt(row[57], 10),
       magDefense: parseInt(row[58], 10),
-      baseParam0: parseBaseParam(baseParams, row[59]),
-      baseParamValue0: parseBaseParamValue(row[59], row[60]),
-      baseParam1: parseBaseParam(baseParams, row[61]),
-      baseParamValue1: parseBaseParamValue(row[61], row[62]),
-      baseParam2: parseBaseParam(baseParams, row[63]),
-      baseParamValue2: parseBaseParamValue(row[63], row[64]),
-      baseParam3: parseBaseParam(baseParams, row[65]),
-      baseParamValue3: parseBaseParamValue(row[65], row[66]),
-      baseParam4: parseBaseParam(baseParams, row[67]),
-      baseParamValue4: parseBaseParamValue(row[67], row[68]),
-      baseParam5: parseBaseParam(baseParams, row[69]),
-      baseParamValue5: parseBaseParamValue(row[69], row[70]),
+      baseParam0: parseBaseParam(baseParams, row[59], row[60]),
+      baseParam1: parseBaseParam(baseParams, row[61], row[62]),
+      baseParam2: parseBaseParam(baseParams, row[63], row[64]),
+      baseParam3: parseBaseParam(baseParams, row[65], row[66]),
+      baseParam4: parseBaseParam(baseParams, row[67], row[68]),
+      baseParam5: parseBaseParam(baseParams, row[69], row[70]),
       itemSpecialBonus: itemSpecialBonuses[parseInt(row[71], 10)].name,
       itemSpecialBonusParam: parseInt(row[72], 10),
-      specialBaseParam0: parseBaseParam(baseParams, row[73]),
-      specialBaseParamValue0: parseBaseParamValue(row[73], row[74]),
-      specialBaseParam1: parseBaseParam(baseParams, row[75]),
-      specialBaseParamValue1: parseBaseParamValue(row[75], row[76]),
-      specialBaseParam2: parseBaseParam(baseParams, row[77]),
-      specialBaseParamValue2: parseBaseParamValue(row[77], row[78]),
-      specialBaseParam3: parseBaseParam(baseParams, row[79]),
-      specialBaseParamValue3: parseBaseParamValue(row[79], row[80]),
-      specialBaseParam4: parseBaseParam(baseParams, row[81]),
-      specialBaseParamValue4: parseBaseParamValue(row[81], row[82]),
-      specialBaseParam5: parseBaseParam(baseParams, row[83]),
-      specialBaseParamValue5: parseBaseParamValue(row[83], row[74]),
+      specialBaseParam0: parseBaseParam(baseParams, row[73], row[74]),
+      specialBaseParam1: parseBaseParam(baseParams, row[75], row[76]),
+      specialBaseParam2: parseBaseParam(baseParams, row[77], row[78]),
+      specialBaseParam3: parseBaseParam(baseParams, row[79], row[80]),
+      specialBaseParam4: parseBaseParam(baseParams, row[81], row[82]),
+      specialBaseParam5: parseBaseParam(baseParams, row[83], row[84]),
       materializeType: parseInt(row[85], 10),
       materiaSlotCount: parseInt(row[86], 10),
       isAdvancedMeldingPermitted: parseBoolean(row[87]),
