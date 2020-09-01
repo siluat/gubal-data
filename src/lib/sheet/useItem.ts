@@ -98,6 +98,19 @@ async function createItem(rows: Row[]): Promise<Item[]> {
     const row36 = parseInt(row[36], 10);
     const salvage = row36 ? salvages[row36].optimalSkill : null;
 
+    const row44 = parseInt(row[44], 10);
+    const grandCompany = grandCompanies[row44]
+      ? grandCompanies[row44].name
+      : '';
+
+    const row49 = parseInt(row[49], 10);
+    const useClassJob = classJobs[row49] ? classJobs[row49].name : '';
+
+    const row71 = parseInt(row[71], 10);
+    const itemSpecialBonus = itemSpecialBonuses[row71]
+      ? itemSpecialBonuses[row71].name
+      : '';
+
     return {
       id: parseInt(row[0], 10),
       description: row[9],
@@ -127,10 +140,10 @@ async function createItem(rows: Row[]): Promise<Item[]> {
       equipLevel: parseInt(row[40], 10),
       equipRestriction: parseInt(row[42], 10),
       classJobCategory: classJobCategories[parseInt(row[43], 10)].name,
-      grandCompany: grandCompanies[parseInt(row[44], 10)].name,
+      grandCompany,
       itemSeries: itemSeriesList[parseInt(row[45], 10)].name,
       baseParamModifier: parseInt(row[46], 10),
-      useClassJob: classJobs[parseInt(row[49], 10)].name,
+      useClassJob,
       physDamage: parseInt(row[51], 10),
       magDamage: parseInt(row[52], 10),
       delay: parseInt(row[53], 10),
@@ -144,7 +157,7 @@ async function createItem(rows: Row[]): Promise<Item[]> {
       baseParam3: parseBaseParam(baseParams, row[65], row[66]),
       baseParam4: parseBaseParam(baseParams, row[67], row[68]),
       baseParam5: parseBaseParam(baseParams, row[69], row[70]),
-      itemSpecialBonus: itemSpecialBonuses[parseInt(row[71], 10)].name,
+      itemSpecialBonus,
       itemSpecialBonusParam: parseInt(row[72], 10),
       specialBaseParam0: parseBaseParam(baseParams, row[73], row[74]),
       specialBaseParam1: parseBaseParam(baseParams, row[75], row[76]),
