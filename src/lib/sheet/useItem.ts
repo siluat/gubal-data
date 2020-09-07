@@ -95,7 +95,7 @@ async function createItem(rows: Row[]): Promise<Item[]> {
     const row35 = parseInt(row[35], 10);
     const glamourItem = row35 ? rows[row35][10] : null;
 
-    const row36 = parseInt(row[37], 10);
+    const row36 = parseInt(row[36], 10);
     const salvage = row36 ? salvages[row36].optimalSkill : null;
 
     return {
