@@ -95,21 +95,8 @@ async function createItem(rows: Row[]): Promise<Item[]> {
     const row35 = parseInt(row[35], 10);
     const glamourItem = row35 ? rows[row35][10] : null;
 
-    const row36 = parseInt(row[36], 10);
+    const row36 = parseInt(row[37], 10);
     const salvage = row36 ? salvages[row36].optimalSkill : null;
-
-    const row44 = parseInt(row[44], 10);
-    const grandCompany = grandCompanies[row44]
-      ? grandCompanies[row44].name
-      : '';
-
-    const row49 = parseInt(row[49], 10);
-    const useClassJob = classJobs[row49] ? classJobs[row49].name : '';
-
-    const row71 = parseInt(row[71], 10);
-    const itemSpecialBonus = itemSpecialBonuses[row71]
-      ? itemSpecialBonuses[row71].name
-      : '';
 
     return {
       id: parseInt(row[0], 10),
@@ -135,41 +122,41 @@ async function createItem(rows: Row[]): Promise<Item[]> {
       glamourItem,
       salvage,
       isCollectable: parseBoolean(row[37]),
-      alwaysCollectable: parseBoolean(row[38]),
-      aetherialReduce: parseInt(row[39]),
-      equipLevel: parseInt(row[40], 10),
-      equipRestriction: parseInt(row[42], 10),
-      classJobCategory: classJobCategories[parseInt(row[43], 10)].name,
-      grandCompany,
-      itemSeries: itemSeriesList[parseInt(row[45], 10)].name,
-      baseParamModifier: parseInt(row[46], 10),
-      useClassJob,
-      physDamage: parseInt(row[51], 10),
-      magDamage: parseInt(row[52], 10),
-      delay: parseInt(row[53], 10),
-      blockRate: parseInt(row[55], 10),
-      block: parseInt(row[56], 10),
-      physDefense: parseInt(row[57], 10),
-      magDefense: parseInt(row[58], 10),
-      baseParam0: parseBaseParam(baseParams, row[59], row[60]),
-      baseParam1: parseBaseParam(baseParams, row[61], row[62]),
-      baseParam2: parseBaseParam(baseParams, row[63], row[64]),
-      baseParam3: parseBaseParam(baseParams, row[65], row[66]),
-      baseParam4: parseBaseParam(baseParams, row[67], row[68]),
-      baseParam5: parseBaseParam(baseParams, row[69], row[70]),
-      itemSpecialBonus,
-      itemSpecialBonusParam: parseInt(row[72], 10),
-      specialBaseParam0: parseBaseParam(baseParams, row[73], row[74]),
-      specialBaseParam1: parseBaseParam(baseParams, row[75], row[76]),
-      specialBaseParam2: parseBaseParam(baseParams, row[77], row[78]),
-      specialBaseParam3: parseBaseParam(baseParams, row[79], row[80]),
-      specialBaseParam4: parseBaseParam(baseParams, row[81], row[82]),
-      specialBaseParam5: parseBaseParam(baseParams, row[83], row[84]),
-      materializeType: parseInt(row[85], 10),
-      materiaSlotCount: parseInt(row[86], 10),
-      isAdvancedMeldingPermitted: parseBoolean(row[87]),
-      isPvP: parseBoolean(row[88]),
-      isGlamourous: parseBoolean(row[90]),
+      alwaysCollectable: parseBoolean(row[39]),
+      aetherialReduce: parseInt(row[40]),
+      equipLevel: parseInt(row[41], 10),
+      equipRestriction: parseInt(row[43], 10),
+      classJobCategory: classJobCategories[parseInt(row[44], 10)].name,
+      grandCompany: grandCompanies[parseInt(row[45], 10)].name,
+      itemSeries: itemSeriesList[parseInt(row[46], 10)].name,
+      baseParamModifier: parseInt(row[47], 10),
+      useClassJob: classJobs[parseInt(row[50], 10)].name,
+      physDamage: parseInt(row[52], 10),
+      magDamage: parseInt(row[53], 10),
+      delay: parseInt(row[54], 10),
+      blockRate: parseInt(row[56], 10),
+      block: parseInt(row[57], 10),
+      physDefense: parseInt(row[58], 10),
+      magDefense: parseInt(row[59], 10),
+      baseParam0: parseBaseParam(baseParams, row[60], row[61]),
+      baseParam1: parseBaseParam(baseParams, row[62], row[63]),
+      baseParam2: parseBaseParam(baseParams, row[64], row[65]),
+      baseParam3: parseBaseParam(baseParams, row[66], row[67]),
+      baseParam4: parseBaseParam(baseParams, row[68], row[69]),
+      baseParam5: parseBaseParam(baseParams, row[70], row[71]),
+      itemSpecialBonus: itemSpecialBonuses[parseInt(row[72], 10)].name,
+      itemSpecialBonusParam: parseInt(row[73], 10),
+      specialBaseParam0: parseBaseParam(baseParams, row[74], row[75]),
+      specialBaseParam1: parseBaseParam(baseParams, row[76], row[77]),
+      specialBaseParam2: parseBaseParam(baseParams, row[78], row[79]),
+      specialBaseParam3: parseBaseParam(baseParams, row[80], row[81]),
+      specialBaseParam4: parseBaseParam(baseParams, row[82], row[83]),
+      specialBaseParam5: parseBaseParam(baseParams, row[84], row[85]),
+      materializeType: parseInt(row[86], 10),
+      materiaSlotCount: parseInt(row[87], 10),
+      isAdvancedMeldingPermitted: parseBoolean(row[88]),
+      isPvP: parseBoolean(row[89]),
+      isGlamourous: parseBoolean(row[91]),
     };
   });
 

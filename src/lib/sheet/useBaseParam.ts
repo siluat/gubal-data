@@ -33,8 +33,7 @@ export function parseBaseParam(
   if (keyColumn === '0') {
     return undefined;
   }
-  const baseParam = baseParams[parseInt(keyColumn, 10)];
-  const name = baseParam ? baseParam.name : '';
+  const name = baseParams[parseInt(keyColumn, 10)].name;
   const value = parseInt(valueColumn, 10);
   return { name, value };
 }
