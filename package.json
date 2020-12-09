@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "chalk": "^4.0.0",
-    "fast-csv": "^4.3.0",
+    "fast-csv": "^4.3.6",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.3"
   }
